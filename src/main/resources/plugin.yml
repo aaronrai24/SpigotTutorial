@@ -1,0 +1,6 @@
+name: SpigotTutorial
+version: '${project.version}'
+main: me.dollarmc.spigottutorial.SpigotTutorial
+api-version: '1.20'
+authors: [Cash]
+description: Spigot plugin development practice
