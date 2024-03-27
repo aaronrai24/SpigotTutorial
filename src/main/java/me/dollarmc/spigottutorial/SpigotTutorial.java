@@ -1,7 +1,7 @@
 package me.dollarmc.spigottutorial;
 
 import me.dollarmc.spigottutorial.listeners.OnLeaveBedListener;
-import me.dollarmc.spigottutorial.listeners.OnPlayerJoinListener;
+import me.dollarmc.spigottutorial.listeners.OnPlayerJoinLeaveListener;
 import me.dollarmc.spigottutorial.listeners.ShearSheepListener;
 import me.dollarmc.spigottutorial.listeners.XPBottleBreakListener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,7 +14,7 @@ public final class SpigotTutorial extends JavaPlugin {
         System.out.println("Plugin Started");
         // Register events
         getServer().getPluginManager().registerEvents(new XPBottleBreakListener(), this);
-        getServer().getPluginManager().registerEvents(new OnPlayerJoinListener(), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerJoinLeaveListener(), this);
         getServer().getPluginManager().registerEvents(new OnLeaveBedListener(), this);
         getServer().getPluginManager().registerEvents(new ShearSheepListener(), this);
     }
