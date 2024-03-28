@@ -9,3 +9,9 @@ commands:
     description: An easy way out.
     aliases: [kys]
     usage: /<command>
+  god:
+    description: Become invincible.
+    usage: /<command>
+  feed:
+    description: Feeds player.
+    usage: /<command>

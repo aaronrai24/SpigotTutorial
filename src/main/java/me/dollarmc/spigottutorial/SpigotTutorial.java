@@ -1,15 +1,12 @@
 package me.dollarmc.spigottutorial;
 
+import me.dollarmc.spigottutorial.commands.DieCommand;
+import me.dollarmc.spigottutorial.commands.FeedCommand;
+import me.dollarmc.spigottutorial.commands.GodCommand;
 import me.dollarmc.spigottutorial.listeners.OnLeaveBedListener;
 import me.dollarmc.spigottutorial.listeners.OnPlayerJoinLeaveListener;
 import me.dollarmc.spigottutorial.listeners.ShearSheepListener;
 import me.dollarmc.spigottutorial.listeners.XPBottleBreakListener;
-import org.bukkit.ChatColor;
-import org.bukkit.block.CommandBlock;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SpigotTutorial extends JavaPlugin {
@@ -23,26 +20,10 @@ public final class SpigotTutorial extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnPlayerJoinLeaveListener(), this);
         getServer().getPluginManager().registerEvents(new OnLeaveBedListener(), this);
         getServer().getPluginManager().registerEvents(new ShearSheepListener(), this);
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // Executes given command
-        // /die - kills the player
-        if (command.getName().equalsIgnoreCase("die")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender; //cast into player object
-                p.setHealth(0.0);
-                p.sendMessage(ChatColor.RED + "You took the easy way out.");
-            }
-            else if(sender instanceof ConsoleCommandSender){
-                System.out.println("The command was sent by the console");
-            }
-            else if(sender instanceof CommandBlock){
-                System.out.println("The command was sent by a command block");
-            }
-        }
-        return true;
+        // Register commands
+        getCommand("god").setExecutor(new GodCommand());
+        getCommand("die").setExecutor(new DieCommand());
+        getCommand("feed").setExecutor(new FeedCommand());
     }
 
     @Override
